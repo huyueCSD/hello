@@ -27,11 +27,38 @@
 		</dependency>
 	</dependencies>
 		<build>
+			<finalName>test_hello_war</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+              <groupId>org.codehaus.cargo</groupId>
+              <artifactId>cargo-maven2-plugin</artifactId>
+                <version>1.2.3</version>
+                <configuration>
+                    <container>
+                          <!-- 指明使用的tomcat服务器版本 -->
+                        <containerId>tomcat7x</containerId>
+                        <type>remote</type>
+                    </container>
+                    <configuration>
+                        <type>runtime</type> 
+                        <cargo.remote.username>admin</cargo.remote.username> 
+                        <cargo.remote.password>admin</cargo.remote.password> 
+                        <cargo.tomcat.manager.url>http://192.168.1.100:8080/manager</cargo.tomcat.manager.url> 
+                    </configuration>
+                </configuration>
+                <executions>  
+                  <execution>  
+                      <phase>deploy</phase>  
+                      <goals>  
+                          <goal>redeploy</goal>  
+                      </goals>  
+                  </execution>  
+              </executions>
+          </plugin>
 		</plugins>
 	</build>
 </project>
