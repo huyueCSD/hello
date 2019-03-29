@@ -10,6 +10,6 @@ public class HelloController {
 	@RequestMapping("")
 	@ResponseBody
 	public String hello(){
-		return "hello Spring Boot 2019";
+		return "hello Spring Boot 2022";
 	}
 }
